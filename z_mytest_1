@@ -1,0 +1,26 @@
+*&---------------------------------------------------------------------*
+*& Report  Z_MYTEST_1
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT z_mytest_1.
+
+
+PARAMETERS: p_url TYPE string.
+
+
+INITIALIZATION.
+
+  DATA(o_dock) = NEW cl_gui_docking_container( ratio = 90
+                                               side = cl_gui_docking_container=>dock_at_bottom
+                                               no_autodef_progid_dynnr = 'X' ).
+
+* HTML-Viewer
+  DATA(o_html) = NEW cl_gui_html_viewer( parent = o_dock ).
+
+* HTML anzeigen
+  o_html->show_url( url = 'https://assets.cdn.sap.com/sapcom/docs/2014/11/e494a920-3b7c-0010-82c7-eda71af511fa.pdf'
+                    in_place = 'X' ).
